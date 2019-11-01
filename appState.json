@@ -25,7 +25,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "hiru1101_translater/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\nconst translate = new AWS.Translate();\n\nexports.handler = function (event, context, callback) {\n    // translate.listTerminologies({\n    //     MaxResults: 5,\n    //     NextToken: \"this is a test\"\n    // }).promise()\n    //     .then(data => {\n    //         console.log(data)\n    //     })\n    //     .catch(err => {\n    //         console.log(err)// error handling goes here\n    //     });\n\n\n\n\n    translate.translateText({\n        SourceLanguageCode: \"en\",\n        TargetLanguageCode: \"nl\",\n        Text: \"om tum, or spicy green papaya salad, comes from Thailand’s north-eastern state of Isaan. Garlic, chillies, green beans, cherry tomatoes, and shredded raw papaya are pounded in a pestle and mortar, releasing a sweet-sour-spicy flavour that's quite distinctive. Regional variations include peanuts, dry shrimp or salted crab into the mix. This dish can be polarizing, some can't get enough of its taste, while others simply can't handle the spice.\"\n    }).promise()\n        .then(data => {\n            console.log(data)\n        })\n        .catch(err => {\n            console.log(err)\n        });\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\nconst translate = new AWS.Translate();\n\nexports.handler = function (event, context, callback) {\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -53,7 +53,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "hiru1101_translater/newpy.py",
-        "code": "import boto3\ns3 = boto3.client(\"s3\")\n\ndef handler(event, context):\n\n    \n    return {\"message\": \"Successfully executed\"}\n",
+        "code": "import boto3\ns3 = boto3.client(\"s3\")\n\ndef handler(event, context):\n\n    return {\"message\": \"Successfully executed\"}\n",
         "config": {
           "runtime": "python2.7",
           "handler": "handler",
@@ -90,7 +90,7 @@
       "3efd1714-3fc3-417f-87cf-caff728f3311",
       "5a4a54f9-07a3-4069-b53f-9234b13f9089"
     ],
-    "currentFileId": "5a4a54f9-07a3-4069-b53f-9234b13f9089",
+    "currentFileId": "3efd1714-3fc3-417f-87cf-caff728f3311",
     "resources": {
       "translateResource": {
         "name": "translateResource",
@@ -146,7 +146,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1572595428345
+    "lastSave": 1572609535861
   },
   "VCS_STATE": {
     "provider": "GitHub",
