@@ -1,0 +1,90 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "1480210f-14ec-461e-ab3d-4fd83391d9fa": {
+        "id": "1480210f-14ec-461e-ab3d-4fd83391d9fa",
+        "parent": null,
+        "name": "hiru1101_translater",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "3efd1714-3fc3-417f-87cf-caff728f3311"
+        ],
+        "isRemovable": false,
+        "filePath": "hiru1101_translater"
+      },
+      "3efd1714-3fc3-417f-87cf-caff728f3311": {
+        "id": "3efd1714-3fc3-417f-87cf-caff728f3311",
+        "parent": "1480210f-14ec-461e-ab3d-4fd83391d9fa",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "hiru1101_translater/lambda.js",
+        "code": "let AWS = require('aws-sdk');\nconst translate = new AWS.Translate();\n\nexports.handler = function (event, context, callback) {\n    translate.translateText({\n        SourceLanguageCode: \"en\",\n        TargetLanguageCode: \"ko\",\n        Text: \"Hello world\"\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
+      }
+    },
+    "rootNode": "1480210f-14ec-461e-ab3d-4fd83391d9fa",
+    "openFiles": [
+      "3efd1714-3fc3-417f-87cf-caff728f3311"
+    ],
+    "currentFileId": "3efd1714-3fc3-417f-87cf-caff728f3311",
+    "resources": {
+      "translateResource": {
+        "name": "translateResource",
+        "type": "Translate",
+        "config": {}
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "hiru1101_translater",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1572587751165
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "hiru1101_translater",
+      "url": "https://github.com/HirudineeADRT/hiru1101_translater"
+    }
+  }
+}
