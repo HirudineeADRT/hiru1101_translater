@@ -25,7 +25,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "hiru1101_translater/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\nconst translate = new AWS.Translate();\n\nexports.handler = function (event, context, callback) {\n    // translate.listTerminologies({\n    //     MaxResults: 5,\n    //     NextToken: \"this is a test\"\n    // }).promise()\n    //     .then(data => {\n    //         console.log(data)\n    //     })\n    //     .catch(err => {\n    //         console.log(err)// error handling goes here\n    //     });\n\n\n\n\n    translate.translateText({\n        SourceLanguageCode: \"en\",\n        TargetLanguageCode: \"nl\",\n        Text: \"om tum, or spicy green papaya salad, comes from Thailand’s north-eastern state of Isaan. Garlic, chillies, green beans, cherry tomatoes, and shredded raw papaya are pounded in a pestle and mortar, releasing a sweet-sour-spicy flavour that's quite distinctive. Regional variations include peanuts, dry shrimp or salted crab into the mix. This dish can be polarizing, some can't get enough of its taste, while others simply can't handle the spice.\"\n    }).promise()\n        .then(data => {\n            console.log(data)\n        })\n        .catch(err => {\n            console.log(err)\n        });\n    s3.putObject({\n        \"Body\": \"gg\",\n        \"Bucket\": \"as2-test-lahiru\",\n        \"Key\": \"gg\"\n    })\n        .promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                ETag: \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                VersionId: \"pSKidl4pHBiNwukdbcPXAIs.sshFFOc0\"\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\nconst translate = new AWS.Translate();\n\nexports.handler = function (event, context, callback) {\n    // translate.listTerminologies({\n    //     MaxResults: 5,\n    //     NextToken: \"this is a test\"\n    // }).promise()\n    //     .then(data => {\n    //         console.log(data)\n    //     })\n    //     .catch(err => {\n    //         console.log(err)// error handling goes here\n    //     });\n\n\n\n\n    translate.translateText({\n        SourceLanguageCode: \"en\",\n        TargetLanguageCode: \"nl\",\n        Text: \"om tum, or spicy green papaya salad, comes from Thailand’s north-eastern state of Isaan. Garlic, chillies, green beans, cherry tomatoes, and shredded raw papaya are pounded in a pestle and mortar, releasing a sweet-sour-spicy flavour that's quite distinctive. Regional variations include peanuts, dry shrimp or salted crab into the mix. This dish can be polarizing, some can't get enough of its taste, while others simply can't handle the spice.\"\n    }).promise()\n        .then(data => {\n            console.log(data)\n        })\n        .catch(err => {\n            console.log(err)\n        });\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -53,7 +53,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "hiru1101_translater/newpy.py",
-        "code": "import boto3\ns3 = boto3.client(\"s3\")\n\ndef handler(event, context):\n\n    try:\n        data = s3.copy_object(\n            Bucket=\"cloud9-ktest\",\n            CopySource=\"/thisisanewbucket/hh\",\n            Key=\"hh\"\n        )\n    \n        \"\"\"\n        data = {\n            \"CopyObjectResult\": {\n                \"ETag\": \"\\\"6805f2cfc46c0f04559748bb039d69ae\\\"\",\n                \"LastModified\": \"<Date Representation>\"\n            }\n        }\n        \"\"\"\n    except BaseException as e:\n        print(e)\n\n\n\n\n    try:\n        data = s3.list_objects(\n            Bucket='as2-test-lahiru',\n            MaxKeys=10,\n            Prefix=''\n        )\n    \n        \"\"\"\n        data = {\n            \"Contents\": [\n               {\n                  \"ETag\": \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                  \"Key\": \"example1.jpg\",\n                  \"LastModified\": \"<Date Representation>\",\n                  \"Owner\": {\n                     \"DisplayName\": \"myname\",\n                     \"ID\": \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                  },\n                  \"Size\": 11,\n                  \"StorageClass\": \"STANDARD\"\n               },\n               # {...}\n           ]\n        }\n        \"\"\"\n    except BaseException as e:\n        print(e)\n    \n    return {\"message\": \"Successfully executed\"}\n",
+        "code": "import boto3\ns3 = boto3.client(\"s3\")\n\ndef handler(event, context):\n\n    \n    return {\"message\": \"Successfully executed\"}\n",
         "config": {
           "runtime": "python2.7",
           "handler": "handler",
@@ -90,37 +90,12 @@
       "3efd1714-3fc3-417f-87cf-caff728f3311",
       "5a4a54f9-07a3-4069-b53f-9234b13f9089"
     ],
-    "currentFileId": "3efd1714-3fc3-417f-87cf-caff728f3311",
+    "currentFileId": "5a4a54f9-07a3-4069-b53f-9234b13f9089",
     "resources": {
       "translateResource": {
         "name": "translateResource",
         "type": "Translate",
         "config": {}
-      },
-      "s3as2TestLahiru": {
-        "name": "s3as2TestLahiru",
-        "type": "S3",
-        "config": {
-          "mode": 1,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "as2-test-lahiru"
-          }
-        }
-      },
-      "s3thisisanewbucket": {
-        "name": "s3thisisanewbucket",
-        "type": "S3",
-        "config": {
-          "mode": 0,
-          "bucket": {
-            "region": "us-east-1",
-            "name": "thisisanewbucket"
-          },
-          "destinationBucket": {
-            "name": "cloud9-ktest"
-          }
-        }
       }
     },
     "customTemplate": {
@@ -171,7 +146,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1572595355909
+    "lastSave": 1572595428345
   },
   "VCS_STATE": {
     "provider": "GitHub",
